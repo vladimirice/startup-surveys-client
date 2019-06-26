@@ -1,7 +1,7 @@
-import Config from './config';
+import { serverURL } from './config';
 const axios = require('axios');
 
-export const axiosServerClient = axios.create({
-  baseURL: Config.getBackendUrl(),
+export const axiosServer = axios.create({
+  baseURL: serverURL,
   withCredentials: true,
 });

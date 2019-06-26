@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Config from '../utils/config';
+import { serverURL } from '../utils/config';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 
 type HeaderProps = { auth: any };
 
 class Header extends Component<HeaderProps> {
   renderLogin = () => {
     if (this.props.auth) {
-      return <li><a href={Config.getBackendUrl() + '/auth/logout'}>Log out</a></li>
+      return [
+        <li key="2"><Payments/></li>,
+        <li key="1"><a href={serverURL + '/auth/logout'}>Log out</a></li>,
+      ];
     }
 
-    return <li><a href={Config.getBackendUrl() + '/auth/google'}>Auth via Google</a></li>;
+    return <li><a href={serverURL + '/auth/google'}>Auth via Google</a></li>;
   };
 
 
