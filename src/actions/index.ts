@@ -8,8 +8,10 @@ export const fetchCurrentUser = () => async (dispatch : Dispatch) => {
   dispatch({ type: FETCH_CURRENT_USER, payload: response.data });
 };
 
-export const handleStripeToken = () => async (dispatch : Dispatch) => {
-  const response = await axiosServer.get('/stripe/callback');
+export const handleStripeToken = (token: string) => async (dispatch : Dispatch) => {
+  const response = await axiosServer.post('/stripe/callback', {
+    token,
+  });
 
   dispatch({ type: FETCH_CURRENT_USER, payload: response.data });
 };

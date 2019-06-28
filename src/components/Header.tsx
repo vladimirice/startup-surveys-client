@@ -10,8 +10,9 @@ class Header extends Component<HeaderProps> {
   renderLogin = () => {
     if (this.props.auth) {
       return [
+        <li key="1" style={{margin: '0 10px'}}>credits {this.props.auth.credits}</li>,
         <li key="2"><Payments/></li>,
-        <li key="1"><a href={serverURL + '/auth/logout'}>Log out</a></li>,
+        <li key="3"><a href={serverURL + '/auth/logout'}>Log out</a></li>,
       ];
     }
 
@@ -23,7 +24,7 @@ class Header extends Component<HeaderProps> {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to={this.props.auth ? '/surveys' : '/'} className="left brand-logo">
+          <Link to={this.props.auth ? '/surveys' : '/'} className="left brand-logo" style={{margin: '0 10px'}}>
             Startup surveys
           </Link>
           <ul className="right">
