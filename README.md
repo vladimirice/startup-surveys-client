@@ -2,12 +2,18 @@
 
 ## Features
 * OAuth cookie-based authorization
-* Billing (Stripe) - test mode
+* Billing (Stripe) - test mode integration
+* Two steps survey creation form (Redux Form)
 
-Card number to test
+
+## Card number to test application
 ```
 4242 4242 4242 4242
 ```
+
+
+
+
 
 
 

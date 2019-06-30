@@ -8,8 +8,12 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 
 import reduxThunk from 'redux-thunk';
+import { axiosServer } from './utils/axios';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+
+// @ts-ignore
+window.axiosApi = axiosServer;
 
 ReactDOM.render(
   <Provider store={store}>
