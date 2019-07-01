@@ -11,10 +11,8 @@
 4242 4242 4242 4242
 ```
 
-
-
-
-
+## TODO
+* Better styling - landing image, responsive design for mobiles
 
 
 
