@@ -9,13 +9,13 @@
 ## Card number to test application
 ```
 4242 4242 4242 4242
-```
+``` 
 
 ## TODO
 * Better styling - landing image, responsive design for mobiles
-
-
-
+* Styles for thanks for your reply + reply stats
+* Empty surveys page - if user creates no surveys = make this page as landing page
+* Frontend autotests
 
 ## Available Scripts
 
