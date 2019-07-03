@@ -5,12 +5,14 @@ import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../actions';
 import Surveys from './surveys/Surveys';
 import SurveysNew from './surveys/SurveysNew';
+import { ThanksPage } from './surveys/ThanksPage';
 
-const Landing:      React.FC = () => <h2>landing</h2>;
+type Props = {
+  fetchCurrentUser: Function,
+};
 
-class App extends Component {
+class App extends Component<Props> {
   componentDidMount(): void {
-    // @ts-ignore
     this.props.fetchCurrentUser();
   }
 
@@ -20,9 +22,9 @@ class App extends Component {
         <BrowserRouter>
           <div className="container">
             <Header/>
-            <Route path="/" exact component={Landing}/>
-            <Route path="/surveys" exact component={Surveys}/>
+            <Route path="/" exact component={Surveys}/>
             <Route path="/surveys/new" exact component={SurveysNew}/>
+            <Route path="/thanks" exact component={ThanksPage}/>
           </div>
         </BrowserRouter>
       </div>

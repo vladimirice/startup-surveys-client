@@ -18,10 +18,10 @@ class SurveysReviewForm extends Component<Props> {
     return surveyFormFields.map((field: IFields) => {
       return (
         <div key={field.name}>
-          <label>{field.label}</label>
-          <div>
+          <h5 className="teal-text lighten-1">{field.label}</h5>
+          <h6>
             { this.props.formValues[field.name] }
-          </div>
+          </h6>
         </div>
       );
     })
@@ -32,18 +32,20 @@ class SurveysReviewForm extends Component<Props> {
       <div>
         <h4>Please review your entries before submitting</h4>
         {this.renderReviewFields()}
+        <div style={{marginTop: '20px'}}>
         <button
           onClick={this.props.onCancel}
-          className="yellow darken-3 btn-flat">
+          className="yellow darken-3 btn-flat white-text">
           Back
-          <i className="material-icons">arrow_back</i>
+          <i className="material-icons left white-text">arrow_back</i>
         </button>
         <button
-          className="green btn-flat right"
+          className="green btn-flat right white-text"
           onClick={ () => this.props.submitSurvey(this.props.formValues, this.props.history) }>
           Submit
-          <i className="material-icons right">email</i>
+          <i className="material-icons right white-text">email</i>
         </button>
+      </div>
       </div>
     );
   }

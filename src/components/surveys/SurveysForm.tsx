@@ -12,7 +12,18 @@ type Props = {
 
 class SurveysForm extends Component<Props> {
   renderInput() {
-    return surveyFormFields.map(item => <Field key={item.name} type="text" name={item.name} label={item.label} component={SurveysFormField}/>)
+    return surveyFormFields.map(
+      item =>
+        <Field
+          key={item.name}
+          type="text"
+          name={item.name}
+          label={item.label}
+          placeholder={item.placeholder}
+          icon={item.icon}
+          component={SurveysFormField}
+        />
+      );
   }
 
   render() {
@@ -23,8 +34,9 @@ class SurveysForm extends Component<Props> {
           this.props.handleSubmit(this.props.onSurveySubmit)
         }>
           {this.renderInput()}
-          <Link to="/surveys" className="red btn-flat left white-text">
+          <Link to="/" className="red btn-flat left white-text">
             Cancel
+            <i className="material-icons right">cancel</i>
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
             Next

@@ -1,44 +1,34 @@
-# Startup surveys client
+# Startup surveys
 
-## Features
-* OAuth cookie-based authorization
-* Billing (Stripe) - test mode integration
-* Two steps survey creation form (Redux Form)
+https://startup-surveys.sunarmy.pro/
 
+This is a project to demonstrate my React skills.
 
-## Card number to test application
+Now project is under development. See [TODO](TODO.md)
+
+## How to use
+
+Just read and follow application instructions step by step.
+
+Card number to test application:
 ```
 4242 4242 4242 4242
 ``` 
 
-## TODO
-* Better styling - landing image, responsive design for mobiles
-* Styles for thanks for your reply + reply stats
-* Empty surveys page - if user creates no surveys = make this page as landing page
-* Frontend autotests
+## Features
+* OAuth cookie-based authorization.
+* Billing (Stripe) - test mode integration.
+* Two steps survey creation form (Redux Form).
+* React Router, Redux forms, Redux thunk are used.
 
 ## Available Scripts
 
-In the project directory, you can run:
+To start app in the development mode:
+```
+npm start
+```
 
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
+To build app:
+```
+npm run build
+```

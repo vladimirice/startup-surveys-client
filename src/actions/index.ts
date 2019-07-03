@@ -19,7 +19,7 @@ export const handleStripeToken = (token: string) => async (dispatch : Dispatch) 
 export const submitSurvey = (values: any, history: any) => async (dispatch: Dispatch) => {
   const response = await axiosServer.post('/surveys', values);
 
-  history.push('/surveys');
+  history.push('/');
   dispatchFetchCurrentUser(dispatch, response);
 };
 
