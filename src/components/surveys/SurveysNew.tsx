@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import SurveysForm from './SurveysForm';
 import SurveysReviewForm from './SurveysReviewForm';
 import { InjectedFormProps, reduxForm } from 'redux-form';
+import { IState } from '../../interfaces/state-interfaces';
+import { connect } from 'react-redux';
+import { AuthType } from '../../interfaces/model-interfaces';
+import { Redirect } from 'react-router';
 
 type State = {
   showReviewForm: boolean;
 }
 
-class SurveysNew extends Component<InjectedFormProps> {
+interface Props extends InjectedFormProps {
+  auth: AuthType;
+}
+
+class SurveysNew extends Component<Props> {
   state: State = { showReviewForm: false };
 
   renderContent() {
@@ -22,10 +30,24 @@ class SurveysNew extends Component<InjectedFormProps> {
   }
 
   render() {
+    if (this.props.auth === false) {
+      return <Redirect to="/"/>
+    }
+
     return this.renderContent();
   }
 }
 
+const mapStateToProps = (state: IState) => {
+  return {
+    auth: state.auth,
+  }
+};
+
+const SurveysNewWithProps = connect(
+  mapStateToProps,
+)(SurveysNew);
+
 export default reduxForm({
   form: 'surveyForm',
-})(SurveysNew);
+})(SurveysNewWithProps);

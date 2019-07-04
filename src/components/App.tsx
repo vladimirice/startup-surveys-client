@@ -6,6 +6,7 @@ import { fetchCurrentUser } from '../actions';
 import Surveys from './surveys/Surveys';
 import SurveysNew from './surveys/SurveysNew';
 import { ThanksPage } from './surveys/ThanksPage';
+import WelcomePage from './WelcomePage';
 
 type Props = {
   fetchCurrentUser: Function,
@@ -22,7 +23,8 @@ class App extends Component<Props> {
         <BrowserRouter>
           <div className="container">
             <Header/>
-            <Route path="/" exact component={Surveys}/>
+            <Route path="/" exact component={WelcomePage}/>
+            <Route path="/surveys" exact component={Surveys}/>
             <Route path="/surveys/new" exact component={SurveysNew}/>
             <Route path="/thanks" exact component={ThanksPage}/>
           </div>

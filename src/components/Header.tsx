@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { serverURL } from '../utils/config';
 import { Link } from 'react-router-dom';
 import Payments from './Payments';
+import { GoogleAuthLink } from './common/GoogleAuthLink';
 
 type HeaderProps = { auth: any };
 
@@ -16,7 +17,11 @@ class Header extends Component<HeaderProps> {
       ];
     }
 
-    return <li><a href={serverURL + '/auth/google'}>Auth via Google</a></li>;
+    return (
+      <li>
+        <GoogleAuthLink class=""/>
+      </li>
+    )
   };
 
 

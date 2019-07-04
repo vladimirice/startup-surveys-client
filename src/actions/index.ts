@@ -24,11 +24,21 @@ export const submitSurvey = (values: any, history: any) => async (dispatch: Disp
 };
 
 export const fetchCurrentUserSurveys = () => async (dispatch: Dispatch) => {
-  const response = await axiosServer.get('/surveys');
+  let response;
+  let payload = '';
+
+  try {
+    response = await axiosServer.get('/surveys');
+    payload = response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      payload = '';
+    }
+  }
 
   dispatch({
     type:    FETCH_CURRENT_USER_SURVEYS,
-    payload: response.data,
+    payload,
   });
 };
 

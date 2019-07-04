@@ -1,63 +1,25 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchCurrentUserSurveys } from '../../actions';
-import Payments from '../Payments';
-import CardImage from '../common/CardImage';
-import { serverURL } from '../../utils/config';
+import { AuthType, ISurvey, IUser } from '../../interfaces/model-interfaces';
+import { IState } from '../../interfaces/state-interfaces';
+import { addCreditsCard, newSurveyCard } from '../elements/cardsElements';
+import { addSurveyButton } from '../elements/buttonsElements';
 
 type Props = {
   fetchCurrentUserSurveys: Function,
-  surveys: any,
-  auth: any,
+  surveys: ISurvey[],
+  auth:    AuthType,
 }
 
 class Surveys extends Component<Props> {
 
   componentDidMount(): void {
-    this.props.fetchCurrentUserSurveys();
+    this.props.fetchCurrentUserSurveys(this.props.auth);
   }
 
-  renderLogin() {
-    return (
-      <CardImage
-        imgAlt="welcome"
-        imgSrc="http://lorempixel.com/output/nature-q-c-1280-200-5.jpg"
-        title="Welcome!"
-        content="Create email surveys, ask people about your ideas, observe response stats. Please log in to continue."
-        action={ <a className="btn-small" href={serverURL + '/auth/google'}>Auth via Google</a> }
-      />
-    );
-  }
-
-  renderAddCredits() {
-    return (
-      <CardImage
-        imgAlt="lorem"
-        imgSrc="http://lorempixel.com/output/nightlife-q-c-1280-200-2.jpg"
-        title="Next step - add credits"
-        content="To use this service you have to buy credits. One credit = one survey. Minimum amount to buy - 5 credits. Notice: card number to test is: 4242 4242 4242 4242"
-        action={<Payments/>}
-      />
-    );
-  }
-  createNewSurvey() {
-    return (
-      <CardImage
-        imgAlt="create-new-survey"
-        imgSrc="http://lorempixel.com/output/business-q-c-1280-200-6.jpg"
-        title="Next step - create a new survey"
-        content="Now it is time to create your first survey! Push the button below to begin."
-        action={
-          <Link to="surveys/new" className="btn-small">
-            Create a new survey
-          </Link>
-        }
-      />
-    );
-  }
-
-  renderSurveys() {
+  renderSurveys(): JSX.Element {
     const elements = this.props.surveys.map((item: any) => {
       return (
         <div className="card darken-1" key={item._id}>
@@ -77,50 +39,57 @@ class Surveys extends Component<Props> {
     });
 
     return (
-      <div>
-        <p style={{fontSize: '14px', backgroundColor: '#80ced6'}}>Check your email and choose one of the answers</p>
-      <ul>
+      <div key="surveys-list">
+        <p key="check-email-hint" style={{fontSize: '14px', backgroundColor: '#80ced6'}}>
+          Check your email and choose one of the answers
+        </p>
         {elements}
-      </ul>
       </div>
     );
   }
 
-  renderContent() {
+  renderContent(): JSX.Element[] | JSX.Element {
+    if (this.props.auth === null) {
+      return <div>Loading...</div>;
+    }
+
+    if (this.props.auth === false) {
+      return <Redirect to="/" />;
+    }
+
+    const render: JSX.Element[] = [];
+
     if (this.props.surveys.length > 0) {
-      return this.renderSurveys();
+      render.push(this.renderSurveys());
     }
 
-    if (!this.props.auth) {
-      return this.renderLogin();
+    const credits = (this.props.auth as IUser).credits;
+
+    if (credits === 0) {
+      render.push(addCreditsCard);
+
+      return render;
     }
 
-    if (this.props.auth.credits === 0) {
-      return this.renderAddCredits();
+    if (this.props.surveys.length === 0) {
+      render.push(newSurveyCard);
+    } else {
+      render.push(addSurveyButton);
     }
 
-    return this.createNewSurvey();
-  }
-
-  renderAddButton() {
-    return (
-      <Link to="surveys/new" className="btn-floating btn-large right">
-        <i className="material-icons">add</i>
-      </Link>
-    );
+    return render;
   }
 
   render() {
     return (
       <div>
           {this.renderContent()}
-          {this.renderAddButton()}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: IState) => {
   return {
     surveys: state.surveys,
     auth:    state.auth,

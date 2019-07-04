@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
 type CardProps = {
   imgAlt: string;
@@ -8,7 +8,7 @@ type CardProps = {
   action: any; // <Payments/>
 }
 
-const CardImage = (props: CardProps) => {
+const CardImage: FunctionComponent<CardProps> = (props: CardProps) => {
   return (
     <div className="card">
       <div className="card-image">
