@@ -3,17 +3,17 @@ import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { surveyFormFieldsSet } from './surveyFormFieldsSet';
 import SurveyFormField from './SurveyFormField';
-import { validateEmails } from '../../../utils/validators/validate-emails';
+import { validateEmails } from '../../../utils/validators/validateEmails';
 
-type Props = {
-  handleSubmit:   Function,
-  onSurveySubmit: Function,
-};
+interface Props {
+  handleSubmit:   Function;
+  onSurveySubmit: Function;
+}
 
 class SurveysForm extends Component<Props> {
-  renderInput() {
+  private renderInput(): JSX.Element[] {
     return surveyFormFieldsSet.map(
-      item =>
+      (item): JSX.Element =>
         <Field
           key={item.name}
           type="text"
@@ -23,10 +23,10 @@ class SurveysForm extends Component<Props> {
           icon={item.icon}
           component={SurveyFormField}
         />
-      );
+    );
   }
 
-  render() {
+  public render(): JSX.Element {
     return (
       <div>
         <h4>Create a new survey</h4>
@@ -48,7 +48,9 @@ class SurveysForm extends Component<Props> {
   }
 }
 
-function validate(values: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function validate(values: any): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const errors: any = {};
 
   for (const { name } of surveyFormFieldsSet) {

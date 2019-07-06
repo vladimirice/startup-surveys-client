@@ -1,8 +1,8 @@
 import { FETCH_CURRENT_USER } from '../actions/types';
-import { IAction } from '../interfaces/actions-interfaces';
-import { AuthType } from '../interfaces/model-interfaces';
+import { AuthType } from '../interfaces/modelInterfaces';
+import { IAction } from '../interfaces/actionsInterfaces';
 
-export default function (state: AuthType | null = null, action: IAction) {
+export default function (state: AuthType | null = null, action: IAction): AuthType {
   if (action.type === FETCH_CURRENT_USER) {
     return action.payload || false;
   }

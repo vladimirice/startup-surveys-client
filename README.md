@@ -15,6 +15,16 @@ Card number to test application:
 4242 4242 4242 4242
 ``` 
 
+## Quality tools
+```
+npm run checks
+```
+
+Additional quality checks requires `codeclimate` to be installed globally
+```
+make check-project-before-commit
+```
+
 ## Features
 * OAuth cookie-based authorization.
 * Billing (Stripe) - test mode integration.

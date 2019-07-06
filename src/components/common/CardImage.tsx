@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-type CardProps = {
+interface CardProps {
   imgAlt:   string;
   imgSrc:   string;
   title:    string;
@@ -8,7 +8,7 @@ type CardProps = {
   action:   React.ReactNode;
 }
 
-const CardImage: FunctionComponent<CardProps> = (props: CardProps) => {
+const CardImage: FunctionComponent<CardProps> = (props: CardProps): JSX.Element => {
   return (
     <div className="card">
       <div className="card-image">
@@ -23,7 +23,7 @@ const CardImage: FunctionComponent<CardProps> = (props: CardProps) => {
         {props.action}
       </div>
     </div>
-    )
+  )
 };
 
 export default CardImage;

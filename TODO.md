@@ -4,16 +4,16 @@ Step 1:
 * Application components refactoring
 
 Step 1.1 - manual testing:
-* Check a responsive design
 * Test with opened console - fix all errors
-* Remove types to the dev section
+* Check a responsive design by browser
+* Check a responsive design by a mobile phone
 
 Step 2:
 * Frontend autotests
 
 Step 3 - badges, utils
 * google speed insights and other google tools
-* GTMetrix tests and shapshots
+* GTMetrix tests - add screen shots
 * Code complete badges
     * quality
     * code coverage

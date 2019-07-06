@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, { FunctionComponent } from 'react';
 
-const ThanksPage: FC = () => {
+const ThanksPage: FunctionComponent = (): JSX.Element => {
   return (
     <div>
       <h5>Thanks! We are very glad to receive your replay</h5>

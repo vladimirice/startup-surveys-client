@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { AuthType, ISurveyModel, IUser } from '../../../interfaces/model-interfaces';
 import { addCreditsCard, newSurveyCard } from '../../common/elements/cardsElements';
 import { addSurveyButton } from '../../common/elements/buttonsElements';
-import { IState } from '../../../interfaces/state-interfaces';
 import { fetchCurrentUserSurveys } from '../../../actions';
+import { AuthType, ISurveyModel, IUser } from '../../../interfaces/modelInterfaces';
+import { IState } from '../../../interfaces/stateInterfaces';
 
-type Props = {
-  fetchCurrentUserSurveys: Function,
-  surveys: ISurveyModel[],
-  auth:    AuthType,
+interface Props {
+  fetchCurrentUserSurveys: Function;
+  surveys: ISurveyModel[];
+  auth:    AuthType;
 }
 
 class SurveysPage extends Component<Props> {
-
-  componentDidMount(): void {
+  public componentDidMount(): void {
     this.props.fetchCurrentUserSurveys(this.props.auth);
   }
 
-  renderSurveys(): JSX.Element {
-    const elements = this.props.surveys.map((item: ISurveyModel) => {
+  private renderSurveys(): JSX.Element {
+    const elements = this.props.surveys.map((item: ISurveyModel): JSX.Element => {
       return (
         <div className="card darken-1" key={item._id}>
           <div className="card-content">
@@ -48,7 +47,7 @@ class SurveysPage extends Component<Props> {
     );
   }
 
-  renderContent(): JSX.Element[] | JSX.Element {
+  private renderContent(): JSX.Element[] | JSX.Element {
     if (this.props.auth === null) {
       return <div>Loading...</div>;
     }
@@ -80,16 +79,16 @@ class SurveysPage extends Component<Props> {
     return render;
   }
 
-  render() {
+  public render(): JSX.Element {
     return (
       <div>
-          {this.renderContent()}
+        {this.renderContent()}
       </div>
     );
   }
 }
 
-const mapStateToProps = (state: IState) => {
+const mapStateToProps = (state: IState): { surveys: ISurveyModel[]; auth: AuthType} => {
   return {
     surveys: state.surveys,
     auth:    state.auth,

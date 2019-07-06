@@ -1,5 +1,5 @@
 import { serverURL } from './config';
-const axios = require('axios');
+import axios from 'axios';
 
 export const axiosServer = axios.create({
   baseURL:          serverURL,

@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { axiosServer } from '../utils/axios';
 import { FETCH_CURRENT_USER, FETCH_CURRENT_USER_SURVEYS } from './types';
 import { Dispatch } from 'redux';
 import { AxiosResponse } from 'axios';
-import { ISurveyModel, ISurveyInput } from '../interfaces/model-interfaces';
 import { History } from 'history';
+import { ISurveyInput, ISurveyModel } from '../interfaces/modelInterfaces';
 
-export const fetchCurrentUser = () => async (dispatch : Dispatch) => {
+export const fetchCurrentUser = (): Function => async (dispatch: Dispatch): Promise<void> => {
   const response: AxiosResponse = await axiosServer.get('/users/current');
 
   dispatchFetchCurrentUser(dispatch, response);
 };
 
-export const handleStripeToken = (token: string) => async (dispatch : Dispatch) => {
+export const handleStripeToken = (token: string): Function => async (dispatch: Dispatch): Promise<void> => {
   const response: AxiosResponse = await axiosServer.post('/stripe/callback', {
     token,
   });
@@ -19,16 +20,17 @@ export const handleStripeToken = (token: string) => async (dispatch : Dispatch) 
   dispatchFetchCurrentUser(dispatch, response);
 };
 
-export const submitSurvey = (values: ISurveyInput, history: History) => async (dispatch: Dispatch) => {
-  const response: AxiosResponse = await axiosServer.post('/surveys', values);
+export const submitSurvey = (values: ISurveyInput, history: History): Function =>
+  async (dispatch: Dispatch): Promise<void> => {
+    const response: AxiosResponse = await axiosServer.post('/surveys', values);
 
-  history.push('/');
-  dispatchFetchCurrentUser(dispatch, response);
-};
+    history.push('/');
+    dispatchFetchCurrentUser(dispatch, response);
+  };
 
-export const fetchCurrentUserSurveys = () => async (dispatch: Dispatch) => {
+export const fetchCurrentUserSurveys = (): Function => async (dispatch: Dispatch): Promise<void> => {
   let response: AxiosResponse;
-  let payload: ISurveyModel[];
+  let payload: ISurveyModel[] = [];
 
   try {
     response = await axiosServer.get('/surveys');
@@ -48,6 +50,6 @@ export const fetchCurrentUserSurveys = () => async (dispatch: Dispatch) => {
 };
 
 
-function dispatchFetchCurrentUser(dispatch: Dispatch, response: AxiosResponse) {
+function dispatchFetchCurrentUser(dispatch: Dispatch, response: AxiosResponse): void {
   dispatch({ type: FETCH_CURRENT_USER, payload: response.data });
 }

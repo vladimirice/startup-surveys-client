@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
-import { AuthType } from '../../../interfaces/model-interfaces';
 import SurveysReviewForm from '../forms/SurveysReviewForm';
 import SurveysForm from '../forms/SurveysForm';
-import { IState } from '../../../interfaces/state-interfaces';
+import { AuthType } from '../../../interfaces/modelInterfaces';
+import { authPropFromState } from '../../../utils/redux-helper/mapStateToPropsHelper';
 
-type State = {
+interface State {
   showReviewForm: boolean;
 }
 
@@ -16,20 +16,20 @@ interface Props extends InjectedFormProps {
 }
 
 class NewSurveyPage extends Component<Props> {
-  state: State = { showReviewForm: false };
+  public state: State = { showReviewForm: false };
 
-  renderContent() {
+  private renderContent(): JSX.Element {
     if (this.state.showReviewForm) {
       // @ts-ignore
       return <SurveysReviewForm
-        onCancel = { () => this.setState({ showReviewForm: false})}
+        onCancel = { (): void => this.setState({ showReviewForm: false})}
       />
     }
 
-    return <SurveysForm onSurveySubmit={ () => this.setState({ showReviewForm: true }) }/>
+    return <SurveysForm onSurveySubmit={ (): void => this.setState({ showReviewForm: true }) }/>
   }
 
-  render() {
+  public render(): JSX.Element {
     if (this.props.auth === false) {
       return <Redirect to="/"/>
     }
@@ -38,14 +38,8 @@ class NewSurveyPage extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: IState) => {
-  return {
-    auth: state.auth,
-  }
-};
-
 const SurveysNewWithProps = connect(
-  mapStateToProps,
+  authPropFromState,
 )(NewSurveyPage);
 
 export default reduxForm({

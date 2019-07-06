@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
-type Props = {
-  input: any,
-  label: string,
-  meta:  any,
-  placeholder:  string,
-  icon:  string,
-};
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  input:        any;
+  label:        string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  meta:         any;
+  placeholder:  string;
+  icon:         string;
+}
 
 export default class SurveyFormField extends Component<Props> {
-  render() {
+  public render(): JSX.Element {
     const { touched, error } = this.props.meta;
     return (
       <div className="input-field" style={{marginTop: '3rem'}}>

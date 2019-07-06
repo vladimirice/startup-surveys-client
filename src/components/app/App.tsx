@@ -1,34 +1,22 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Header from './Header';
 import { connect } from 'react-redux';
 import { fetchCurrentUser } from '../../actions';
-import ThanksPage from './../surveys/pages/ThanksPage';
-import WelcomePage from './pages/WelcomePage';
-import SurveysPage from '../surveys/pages/SurveysPage';
-import NewSurveyPage from '../surveys/pages/NewSurveyPage';
+import AppRouter from './AppRouter';
+import { IActionFunction } from '../../interfaces/actionsInterfaces';
 
-type Props = {
-  fetchCurrentUser: Function,
-};
+interface Props {
+  fetchCurrentUser: IActionFunction;
+}
 
 class App extends Component<Props> {
-  componentDidMount(): void {
+  public componentDidMount(): void {
     this.props.fetchCurrentUser();
   }
 
-  render() {
+  public render(): JSX.Element {
     return (
       <div>
-        <BrowserRouter>
-          <div className="container">
-            <Header/>
-            <Route path="/" exact component={WelcomePage}/>
-            <Route path="/surveys" exact component={SurveysPage}/>
-            <Route path="/surveys/new" exact component={NewSurveyPage}/>
-            <Route path="/thanks" exact component={ThanksPage}/>
-          </div>
-        </BrowserRouter>
+        <AppRouter/>
       </div>
     );
   }
