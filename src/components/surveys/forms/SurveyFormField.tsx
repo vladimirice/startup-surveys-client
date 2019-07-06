@@ -8,7 +8,7 @@ type Props = {
   icon:  string,
 };
 
-export default class SurveysFormField extends Component<Props> {
+export default class SurveyFormField extends Component<Props> {
   render() {
     const { touched, error } = this.props.meta;
     return (

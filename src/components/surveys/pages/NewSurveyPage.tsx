@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import SurveysForm from './SurveysForm';
-import SurveysReviewForm from './SurveysReviewForm';
 import { InjectedFormProps, reduxForm } from 'redux-form';
-import { IState } from '../../interfaces/state-interfaces';
 import { connect } from 'react-redux';
-import { AuthType } from '../../interfaces/model-interfaces';
 import { Redirect } from 'react-router';
+import { AuthType } from '../../../interfaces/model-interfaces';
+import SurveysReviewForm from '../forms/SurveysReviewForm';
+import SurveysForm from '../forms/SurveysForm';
+import { IState } from '../../../interfaces/state-interfaces';
 
 type State = {
   showReviewForm: boolean;
@@ -15,7 +15,7 @@ interface Props extends InjectedFormProps {
   auth: AuthType;
 }
 
-class SurveysNew extends Component<Props> {
+class NewSurveyPage extends Component<Props> {
   state: State = { showReviewForm: false };
 
   renderContent() {
@@ -46,7 +46,7 @@ const mapStateToProps = (state: IState) => {
 
 const SurveysNewWithProps = connect(
   mapStateToProps,
-)(SurveysNew);
+)(NewSurveyPage);
 
 export default reduxForm({
   form: 'surveyForm',

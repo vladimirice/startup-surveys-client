@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { serverURL } from '../utils/config';
 import { Link } from 'react-router-dom';
-import Payments from './Payments';
-import { GoogleAuthLink } from './common/GoogleAuthLink';
+import GoogleAuthLink from '../common/GoogleAuthLink';
+import { serverURL } from '../../utils/config';
+import Payments from '../payments/Payments';
 
 type HeaderProps = { auth: any };
 

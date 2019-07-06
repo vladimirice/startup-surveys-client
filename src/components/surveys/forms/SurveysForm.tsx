@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import SurveysFormField from './SurveysFormField';
 import { Link } from 'react-router-dom';
-import { validateEmails } from '../../utils/validators/validate-emails';
-import { surveyFormFields } from './surveyFormFields';
+import { surveyFormFieldsSet } from './surveyFormFieldsSet';
+import SurveyFormField from './SurveyFormField';
+import { validateEmails } from '../../../utils/validators/validate-emails';
 
 type Props = {
   handleSubmit:   Function,
@@ -12,7 +12,7 @@ type Props = {
 
 class SurveysForm extends Component<Props> {
   renderInput() {
-    return surveyFormFields.map(
+    return surveyFormFieldsSet.map(
       item =>
         <Field
           key={item.name}
@@ -21,7 +21,7 @@ class SurveysForm extends Component<Props> {
           label={item.label}
           placeholder={item.placeholder}
           icon={item.icon}
-          component={SurveysFormField}
+          component={SurveyFormField}
         />
       );
   }
@@ -51,7 +51,7 @@ class SurveysForm extends Component<Props> {
 function validate(values: any) {
   const errors: any = {};
 
-  for (const { name } of surveyFormFields) {
+  for (const { name } of surveyFormFieldsSet) {
     if (!values[name]) {
       errors[name] = `Please provide a value for ${name}`;
     }

@@ -5,7 +5,7 @@ export interface IFields {
   icon: string;
 }
 
-export const surveyFormFields: IFields[] = [
+export const surveyFormFieldsSet: IFields[] = [
   {
     label: 'Survey title',
     name: 'title',

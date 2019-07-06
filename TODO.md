@@ -1,24 +1,24 @@
 # TODO
 
-Create a landing component for non-authorized users with a single card - `welcome`
-
-Make it not possible to create a survey without credits
-
-
 Step 1:
-* Implement CSS modules - avoid inline styling of Form and ThanksPage
-* Serve all image by yourself
-* Observe all console errors
-* Check a responsive design
 * Application components refactoring
+
+Step 1.1 - manual testing:
+* Check a responsive design
+* Test with opened console - fix all errors
+* Remove types to the dev section
 
 Step 2:
 * Frontend autotests
 
-Step 3 - badges
+Step 3 - badges, utils
+* google speed insights and other google tools
+* GTMetrix tests and shapshots
 * Code complete badges
     * quality
     * code coverage
+
+
 
 
 ## Future improvements

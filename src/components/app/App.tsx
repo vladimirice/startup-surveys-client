@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { fetchCurrentUser } from '../actions';
-import Surveys from './surveys/Surveys';
-import SurveysNew from './surveys/SurveysNew';
-import { ThanksPage } from './surveys/ThanksPage';
-import WelcomePage from './WelcomePage';
+import { fetchCurrentUser } from '../../actions';
+import ThanksPage from './../surveys/pages/ThanksPage';
+import WelcomePage from './pages/WelcomePage';
+import SurveysPage from '../surveys/pages/SurveysPage';
+import NewSurveyPage from '../surveys/pages/NewSurveyPage';
 
 type Props = {
   fetchCurrentUser: Function,
@@ -24,8 +24,8 @@ class App extends Component<Props> {
           <div className="container">
             <Header/>
             <Route path="/" exact component={WelcomePage}/>
-            <Route path="/surveys" exact component={Surveys}/>
-            <Route path="/surveys/new" exact component={SurveysNew}/>
+            <Route path="/surveys" exact component={SurveysPage}/>
+            <Route path="/surveys/new" exact component={NewSurveyPage}/>
             <Route path="/thanks" exact component={ThanksPage}/>
           </div>
         </BrowserRouter>

@@ -21,6 +21,10 @@ Card number to test application:
 * Two steps survey creation form (Redux Form).
 * React Router, Redux forms, Redux thunk are used.
 
+## Quality
+* Different badges
+* Snyk test
+
 ## Available Scripts
 
 To start app in the development mode:

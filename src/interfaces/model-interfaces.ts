@@ -5,14 +5,22 @@ export interface IUser {
   credits:  number;
 }
 
-export interface ISurvey {
+interface ISurvey {
   title:      string;
+  subject:    string;
   body:       string;
+}
+
+export interface ISurveyInput extends ISurvey {
+  recipients: string;
+}
+
+export interface ISurveyModel extends ISurvey {
+  _id:        string;
   yes:        number;
   no:         number;
 
   _user:          IUser;
-  createdAt:      Date,
-  lastResponded:  Date,
+  createdAt:      Date;
 }
 

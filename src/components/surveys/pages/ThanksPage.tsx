@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-export const ThanksPage: FC = () => {
+const ThanksPage: FC = () => {
   return (
     <div>
       <h5>Thanks! We are very glad to receive your replay</h5>
@@ -9,3 +9,5 @@ export const ThanksPage: FC = () => {
     </div>
   );
 };
+
+export default ThanksPage;

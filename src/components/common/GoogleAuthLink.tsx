@@ -5,8 +5,11 @@ type Props = {
   class: string;
 }
 
-export const GoogleAuthLink: FunctionComponent<Props> = (props: Props) => {
+const GoogleAuthLink: FunctionComponent<Props> = (props: Props) => {
   return (
     <a className={props.class} href={`${serverURL}/auth/google`}>{'Auth via Google'}</a>
   );
 };
+
+export default GoogleAuthLink;
+

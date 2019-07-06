@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchCurrentUserSurveys } from '../../actions';
-import { AuthType, ISurvey, IUser } from '../../interfaces/model-interfaces';
-import { IState } from '../../interfaces/state-interfaces';
-import { addCreditsCard, newSurveyCard } from '../elements/cardsElements';
-import { addSurveyButton } from '../elements/buttonsElements';
+import { AuthType, ISurveyModel, IUser } from '../../../interfaces/model-interfaces';
+import { addCreditsCard, newSurveyCard } from '../../common/elements/cardsElements';
+import { addSurveyButton } from '../../common/elements/buttonsElements';
+import { IState } from '../../../interfaces/state-interfaces';
+import { fetchCurrentUserSurveys } from '../../../actions';
 
 type Props = {
   fetchCurrentUserSurveys: Function,
-  surveys: ISurvey[],
+  surveys: ISurveyModel[],
   auth:    AuthType,
 }
 
-class Surveys extends Component<Props> {
+class SurveysPage extends Component<Props> {
 
   componentDidMount(): void {
     this.props.fetchCurrentUserSurveys(this.props.auth);
   }
 
   renderSurveys(): JSX.Element {
-    const elements = this.props.surveys.map((item: any) => {
+    const elements = this.props.surveys.map((item: ISurveyModel) => {
       return (
         <div className="card darken-1" key={item._id}>
           <div className="card-content">
@@ -96,4 +96,4 @@ const mapStateToProps = (state: IState) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchCurrentUserSurveys })(Surveys);
+export default connect(mapStateToProps, { fetchCurrentUserSurveys })(SurveysPage);

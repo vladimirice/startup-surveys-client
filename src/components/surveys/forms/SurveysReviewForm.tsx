@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { IFields, surveyFormFields } from './surveyFormFields';
-import { submitSurvey } from '../../actions';
 import { withRouter } from 'react-router';
+import { IFields, surveyFormFieldsSet } from './surveyFormFieldsSet';
+import { submitSurvey } from '../../../actions';
 
 type Props = {
   onCancel: any,
@@ -15,7 +15,7 @@ type Props = {
 
 class SurveysReviewForm extends Component<Props> {
   private renderReviewFields() {
-    return surveyFormFields.map((field: IFields) => {
+    return surveyFormFieldsSet.map((field: IFields) => {
       return (
         <div key={field.name}>
           <h5 className="teal-text lighten-1">{field.label}</h5>

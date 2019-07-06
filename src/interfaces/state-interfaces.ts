@@ -1,6 +1,6 @@
-import { AuthType, ISurvey } from './model-interfaces';
+import { AuthType, ISurveyModel } from './model-interfaces';
 
 export interface IState {
   auth: AuthType;
-  surveys: ISurvey[];
+  surveys: ISurveyModel[];
 }
