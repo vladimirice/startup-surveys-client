@@ -17,7 +17,7 @@ export const newSurveyCard: JSX.Element = <CardImage
   key="new-survey-card"
   imgAlt="create-new-survey"
   imgSrc="/img/create-new-survey.jpg"
-  title="Next step - create a new survey"
+  title="Surveys"
   content="Now it is time to create your first survey! Push the button below to begin."
   action={
     <Link to="surveys/new" className="btn-small">

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addCreditsCard, newSurveyCard } from '../../common/elements/cardsElements';
-import { addSurveyButton } from '../../common/elements/buttonsElements';
 import { fetchCurrentUserSurveys } from '../../../actions';
 import { AuthType, ISurveyModel, IUser } from '../../../interfaces/modelInterfaces';
 import { IState } from '../../../interfaces/stateInterfaces';
@@ -49,11 +48,7 @@ class SurveysPage extends Component<Props> {
       return render;
     }
 
-    if (this.props.surveys.length === 0) {
-      render.push(newSurveyCard);
-    } else {
-      render.push(addSurveyButton);
-    }
+    render.push(newSurveyCard);
 
     return render;
   }
