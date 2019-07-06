@@ -1,7 +1,7 @@
-import { serverURL } from './config';
 import axios from 'axios';
+import { serverURL } from './config';
 
 export const axiosServer = axios.create({
-  baseURL:          serverURL,
-  withCredentials:  true,
+  baseURL: serverURL,
+  withCredentials: true,
 });

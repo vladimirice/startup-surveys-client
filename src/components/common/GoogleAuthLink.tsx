@@ -5,11 +5,8 @@ interface Props {
   class: string;
 }
 
-const GoogleAuthLink: FunctionComponent<Props> = (props: Props): JSX.Element => {
-  return (
-    <a className={props.class} href={`${serverURL}/auth/google`}>{'Auth via Google'}</a>
-  );
-};
+const GoogleAuthLink: FunctionComponent<Props> = (props: Props): JSX.Element => (
+  <a className={props.class} href={`${serverURL}/auth/google`}>{'Auth via Google'}</a>
+);
 
 export default GoogleAuthLink;
-

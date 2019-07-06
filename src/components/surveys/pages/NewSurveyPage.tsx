@@ -20,7 +20,7 @@ class NewSurveyPage extends Component<Props> {
 
   public render(): JSX.Element {
     if (this.props.auth === false) {
-      return <Redirect to="/"/>
+      return <Redirect to="/"/>;
     }
 
     return this.renderContent();
@@ -30,13 +30,13 @@ class NewSurveyPage extends Component<Props> {
     if (this.state.showReviewForm) {
       // @ts-ignore
       return <SurveysReviewForm
-        onCancel = { (): void => this.setState({ showReviewForm: false})}
-      />
+        onCancel = { (): void => this.setState({ showReviewForm: false })}
+      />;
     }
 
     return <SurveysForm
       onSurveySubmit={ (): void => this.setState({ showReviewForm: true }) }
-    />
+    />;
   }
 }
 

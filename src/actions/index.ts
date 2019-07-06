@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import { axiosServer } from '../utils/axios';
-import { FETCH_CURRENT_USER, FETCH_CURRENT_USER_SURVEYS } from './types';
 import { Dispatch } from 'redux';
 import { AxiosResponse } from 'axios';
 import { History } from 'history';
+import { FETCH_CURRENT_USER, FETCH_CURRENT_USER_SURVEYS } from './types';
+import { axiosServer } from '../utils/axios';
 import { ISurveyInput, ISurveyModel } from '../interfaces/modelInterfaces';
 
 export const fetchCurrentUser = (): Function => async (dispatch: Dispatch): Promise<void> => {
@@ -20,13 +20,12 @@ export const handleStripeToken = (token: string): Function => async (dispatch: D
   dispatchFetchCurrentUser(dispatch, response);
 };
 
-export const submitSurvey = (values: ISurveyInput, history: History): Function =>
-  async (dispatch: Dispatch): Promise<void> => {
-    const response: AxiosResponse = await axiosServer.post('/surveys', values);
+export const submitSurvey = (values: ISurveyInput, history: History): Function => async (dispatch: Dispatch): Promise<void> => {
+  const response: AxiosResponse = await axiosServer.post('/surveys', values);
 
-    history.push('/');
-    dispatchFetchCurrentUser(dispatch, response);
-  };
+  history.push('/');
+  dispatchFetchCurrentUser(dispatch, response);
+};
 
 export const fetchCurrentUserSurveys = (): Function => async (dispatch: Dispatch): Promise<void> => {
   let response: AxiosResponse;
@@ -44,7 +43,7 @@ export const fetchCurrentUserSurveys = (): Function => async (dispatch: Dispatch
   }
 
   dispatch({
-    type:    FETCH_CURRENT_USER_SURVEYS,
+    type: FETCH_CURRENT_USER_SURVEYS,
     payload,
   });
 };

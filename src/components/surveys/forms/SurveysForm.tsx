@@ -8,23 +8,22 @@ import { IFormValues } from '../../../interfaces/formInterfaces';
 import { IStringToAny } from '../../../interfaces/commonInterfaces';
 
 interface Props {
-  handleSubmit:   Function;
+  handleSubmit: Function;
   onSurveySubmit: Function;
 }
 
 class SurveysForm extends Component<Props> {
   private renderInput(): JSX.Element[] {
     return surveyFormFieldsSet.map(
-      (item): JSX.Element =>
-        <Field
-          key={item.name}
-          type="text"
-          name={item.name}
-          label={item.label}
-          placeholder={item.placeholder}
-          icon={item.icon}
-          component={SurveyFormField}
-        />
+      (item): JSX.Element => <Field
+        key={item.name}
+        type="text"
+        name={item.name}
+        label={item.label}
+        placeholder={item.placeholder}
+        icon={item.icon}
+        component={SurveyFormField}
+      />,
     );
   }
 
@@ -53,6 +52,7 @@ class SurveysForm extends Component<Props> {
 function validate(values: IFormValues): IStringToAny {
   const errors: IStringToAny = {};
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const { name } of surveyFormFieldsSet) {
     if (!values[name]) {
       errors[name] = `Please provide a value for ${name}`;
@@ -72,4 +72,3 @@ export default reduxForm({
   destroyOnUnmount: false,
 // @ts-ignore
 })(SurveysForm);
-

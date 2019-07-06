@@ -24,7 +24,7 @@ class Payments extends Component<PaymentsProps> {
       >
         <button className="btn">Add credits</button>
       </StripeCheckout>
-    )
+    );
   }
 }
 

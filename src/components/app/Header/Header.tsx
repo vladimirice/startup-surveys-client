@@ -21,7 +21,7 @@ class Header extends Component<HeaderProps> {
       return [
         <li key="credits-header-li" className={styles.li_margins}>credits {credits}</li>,
         <li key="payments-header-li"><Payments/></li>,
-        <li key="logout-header-li"><a href={serverURL + '/auth/logout'}>Log out</a></li>,
+        <li key="logout-header-li"><a href={`${serverURL}/auth/logout`}>Log out</a></li>,
       ];
     }
 
@@ -29,14 +29,14 @@ class Header extends Component<HeaderProps> {
       <li>
         <GoogleAuthLink class=""/>
       </li>
-    )
+    );
   };
 
   public render(): JSX.Element {
     return (
       <nav>
         <div className="nav-wrapper #42a5f5 blue lighten-1">
-          <Link to="/" className={"left brand-logo " + styles.li_margins}>
+          <Link to="/" className={`left brand-logo ${styles.li_margins}`}>
             Surveys
           </Link>
           <ul className="right">
@@ -51,7 +51,7 @@ class Header extends Component<HeaderProps> {
 function mapStateToProps(state: IState): { auth: AuthType } {
   return {
     auth: state.auth,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(Header);

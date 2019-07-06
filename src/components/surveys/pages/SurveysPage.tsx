@@ -7,12 +7,12 @@ import { fetchCurrentUserSurveys } from '../../../actions';
 import { AuthType, ISurveyModel, IUser } from '../../../interfaces/modelInterfaces';
 import { IState } from '../../../interfaces/stateInterfaces';
 
-import styles from './../../common/cssModules/common.module.css';
+import styles from '../../common/cssModules/common.module.css';
 
 interface Props {
   fetchCurrentUserSurveys: Function;
   surveys: ISurveyModel[];
-  auth:    AuthType;
+  auth: AuthType;
 }
 
 class SurveysPage extends Component<Props> {
@@ -41,7 +41,7 @@ class SurveysPage extends Component<Props> {
       render.push(this.renderSurveys());
     }
 
-    const credits = (this.props.auth as IUser).credits;
+    const { credits } = this.props.auth as IUser;
 
     if (credits === 0) {
       render.push(addCreditsCard);
@@ -59,23 +59,21 @@ class SurveysPage extends Component<Props> {
   }
 
   private renderSurveys(): JSX.Element {
-    const elements = this.props.surveys.map((item: ISurveyModel): JSX.Element => {
-      return (
-        <div className="card darken-1" key={item._id}>
-          <div className="card-content">
-            <span className="card-title">{item.title}</span>
-            <p>{item.body}</p>
-            <p className="right">
+    const elements = this.props.surveys.map((item: ISurveyModel): JSX.Element => (
+      <div className="card darken-1" key={item._id}>
+        <div className="card-content">
+          <span className="card-title">{item.title}</span>
+          <p>{item.body}</p>
+          <p className="right">
               Sent On: { new Date(item.createdAt).toLocaleString() }
-            </p>
-          </div>
-          <div className="card-action">
-            <a href="/">Yes: {item.yes}</a>
-            <a href="/">no: {item.no}</a>
-          </div>
+          </p>
         </div>
-      );
-    });
+        <div className="card-action">
+          <a href="/">Yes: {item.yes}</a>
+          <a href="/">no: {item.no}</a>
+        </div>
+      </div>
+    ));
 
     return (
       <div key="surveys-list">
@@ -88,11 +86,9 @@ class SurveysPage extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: IState): { surveys: ISurveyModel[]; auth: AuthType} => {
-  return {
-    surveys: state.surveys,
-    auth:    state.auth,
-  };
-};
+const mapStateToProps = (state: IState): { surveys: ISurveyModel[]; auth: AuthType} => ({
+  surveys: state.surveys,
+  auth: state.auth,
+});
 
 export default connect(mapStateToProps, { fetchCurrentUserSurveys })(SurveysPage);

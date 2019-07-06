@@ -2,13 +2,13 @@ export type AuthType = IUser | boolean | null;
 
 export interface IUser {
   googleId: string;
-  credits:  number;
+  credits: number;
 }
 
 interface ISurvey {
-  title:      string;
-  subject:    string;
-  body:       string;
+  title: string;
+  subject: string;
+  body: string;
 }
 
 export interface ISurveyInput extends ISurvey {
@@ -16,11 +16,10 @@ export interface ISurveyInput extends ISurvey {
 }
 
 export interface ISurveyModel extends ISurvey {
-  _id:        string;
-  yes:        number;
-  no:         number;
+  _id: string;
+  yes: number;
+  no: number;
 
-  _user:          IUser;
-  createdAt:      Date;
+  _user: IUser;
+  createdAt: Date;
 }
-

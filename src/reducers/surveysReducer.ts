@@ -8,4 +8,4 @@ export default function (state: ISurveyModel[] = [], action: IAction): ISurveyMo
   }
 
   return state;
-};
+}

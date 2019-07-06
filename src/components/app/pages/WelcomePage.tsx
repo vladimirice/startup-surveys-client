@@ -17,7 +17,7 @@ class WelcomePage extends Component<Props> {
 
   private renderContent(): JSX.Element {
     if (this.props.auth) {
-      return <Redirect to="/surveys" />
+      return <Redirect to="/surveys" />;
     }
 
     return (
@@ -30,7 +30,7 @@ class WelcomePage extends Component<Props> {
           action={<GoogleAuthLink class='btn-small'/>}
         />
       </div>
-    )
+    );
   }
 }
 
