@@ -18,6 +18,14 @@ interface Props extends InjectedFormProps {
 class NewSurveyPage extends Component<Props> {
   public state: State = { showReviewForm: false };
 
+  public render(): JSX.Element {
+    if (this.props.auth === false) {
+      return <Redirect to="/"/>
+    }
+
+    return this.renderContent();
+  }
+
   private renderContent(): JSX.Element {
     if (this.state.showReviewForm) {
       // @ts-ignore
@@ -26,15 +34,9 @@ class NewSurveyPage extends Component<Props> {
       />
     }
 
-    return <SurveysForm onSurveySubmit={ (): void => this.setState({ showReviewForm: true }) }/>
-  }
-
-  public render(): JSX.Element {
-    if (this.props.auth === false) {
-      return <Redirect to="/"/>
-    }
-
-    return this.renderContent();
+    return <SurveysForm
+      onSurveySubmit={ (): void => this.setState({ showReviewForm: true }) }
+    />
   }
 }
 

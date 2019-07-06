@@ -1,12 +1,10 @@
 # TODO
 
-Step 1:
-* Application components refactoring
-
-Step 1.1 - manual testing:
-* Test with opened console - fix all errors
-* Check a responsive design by browser
-* Check a responsive design by a mobile phone
+Step 1 - manual testing:
+* Code climate badge
+* All workflow by a responsive browser setting
+* Deployment
+* Recheck a responsive design by a mobile phone
 
 Step 2:
 * Frontend autotests
@@ -17,10 +15,8 @@ Step 3 - badges, utils
 * Code complete badges
     * quality
     * code coverage
-
-
-
+* Documentation polishing
 
 ## Future improvements
 * Not logged user follows the /surveys URL - a request returns 401 status. Cookie based app, how to avoid the request?
-* Common lib to store model interfaces
+* Common backend-frontend library to store model interfaces

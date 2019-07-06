@@ -7,6 +7,8 @@ import { fetchCurrentUserSurveys } from '../../../actions';
 import { AuthType, ISurveyModel, IUser } from '../../../interfaces/modelInterfaces';
 import { IState } from '../../../interfaces/stateInterfaces';
 
+import styles from './../../common/cssModules/common.module.css';
+
 interface Props {
   fetchCurrentUserSurveys: Function;
   surveys: ISurveyModel[];
@@ -18,32 +20,9 @@ class SurveysPage extends Component<Props> {
     this.props.fetchCurrentUserSurveys(this.props.auth);
   }
 
-  private renderSurveys(): JSX.Element {
-    const elements = this.props.surveys.map((item: ISurveyModel): JSX.Element => {
-      return (
-        <div className="card darken-1" key={item._id}>
-          <div className="card-content">
-            <span className="card-title">{item.title}</span>
-            <p>{item.body}</p>
-            <p className="right">
-              Sent On: { new Date(item.createdAt).toLocaleString() }
-            </p>
-          </div>
-          <div className="card-action">
-            <a href="/">Yes: {item.yes}</a>
-            <a href="/">no: {item.no}</a>
-          </div>
-        </div>
-      );
-    });
-
+  public render(): JSX.Element {
     return (
-      <div key="surveys-list">
-        <p key="check-email-hint" style={{fontSize: '14px', backgroundColor: '#80ced6'}}>
-          Check your email and choose one of the answers
-        </p>
-        {elements}
-      </div>
+      <div>{this.renderContent()}</div>
     );
   }
 
@@ -79,10 +58,31 @@ class SurveysPage extends Component<Props> {
     return render;
   }
 
-  public render(): JSX.Element {
+  private renderSurveys(): JSX.Element {
+    const elements = this.props.surveys.map((item: ISurveyModel): JSX.Element => {
+      return (
+        <div className="card darken-1" key={item._id}>
+          <div className="card-content">
+            <span className="card-title">{item.title}</span>
+            <p>{item.body}</p>
+            <p className="right">
+              Sent On: { new Date(item.createdAt).toLocaleString() }
+            </p>
+          </div>
+          <div className="card-action">
+            <a href="/">Yes: {item.yes}</a>
+            <a href="/">no: {item.no}</a>
+          </div>
+        </div>
+      );
+    });
+
     return (
-      <div>
-        {this.renderContent()}
+      <div key="surveys-list">
+        <p key="check-email-hint" className={styles.testerTip}>
+          Check your email and answer the question.
+        </p>
+        {elements}
       </div>
     );
   }

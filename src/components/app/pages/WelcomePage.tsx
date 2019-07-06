@@ -11,6 +11,10 @@ interface Props {
 }
 
 class WelcomePage extends Component<Props> {
+  public render(): JSX.Element {
+    return this.renderContent();
+  }
+
   private renderContent(): JSX.Element {
     if (this.props.auth) {
       return <Redirect to="/surveys" />
@@ -27,10 +31,6 @@ class WelcomePage extends Component<Props> {
         />
       </div>
     )
-  }
-
-  public render(): JSX.Element {
-    return this.renderContent();
   }
 }
 

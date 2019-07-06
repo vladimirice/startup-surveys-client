@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { surveyFormFieldsSet } from './surveyFormFieldsSet';
 import SurveyFormField from './SurveyFormField';
 import { validateEmails } from '../../../utils/validators/validateEmails';
+import { IFormValues } from '../../../interfaces/formInterfaces';
+import { IStringToAny } from '../../../interfaces/commonInterfaces';
 
 interface Props {
   handleSubmit:   Function;
@@ -34,7 +36,7 @@ class SurveysForm extends Component<Props> {
           this.props.handleSubmit(this.props.onSurveySubmit)
         }>
           {this.renderInput()}
-          <Link to="/" className="red btn-flat left white-text">
+          <Link to="/surveys" className="red btn-flat left white-text">
             Cancel
             <i className="material-icons right">cancel</i>
           </Link>
@@ -48,10 +50,8 @@ class SurveysForm extends Component<Props> {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function validate(values: any): any {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const errors: any = {};
+function validate(values: IFormValues): IStringToAny {
+  const errors: IStringToAny = {};
 
   for (const { name } of surveyFormFieldsSet) {
     if (!values[name]) {
@@ -60,7 +60,7 @@ function validate(values: any): any {
   }
 
   if (values.recipients) {
-    errors['recipients'] = validateEmails(values.recipients);
+    errors.recipients = validateEmails(values.recipients);
   }
 
   return errors;

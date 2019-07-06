@@ -2,9 +2,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import WelcomePage from './pages/WelcomePage';
 import SurveysPage from '../surveys/pages/SurveysPage';
 import NewSurveyPage from '../surveys/pages/NewSurveyPage';
-import ThanksPage from '../surveys/pages/ThanksPage';
 import React, { FunctionComponent } from 'react';
 import Header from './Header/Header';
+import ThanksPage from '../surveys/pages/ThanksPage';
 
 const AppRouter: FunctionComponent = (): JSX.Element => {
   return (
