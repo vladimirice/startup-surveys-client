@@ -2,7 +2,6 @@
 
 Step 1 - manual testing:
 * Code climate badge
-* All workflow by a responsive browser setting
 * Deployment
 * Recheck a responsive design by a mobile phone
 

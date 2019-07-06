@@ -19,7 +19,7 @@ class Header extends Component<HeaderProps> {
       const { credits } = (this.props.auth as IUser);
 
       return [
-        <li key="credits-header-li" className={styles.li_margins}>credits {credits}</li>,
+        <li key="credits-header-li" className={`${styles.li_margins} hide-on-med-and-down`}>credits {credits}</li>,
         <li key="payments-header-li"><Payments/></li>,
         <li key="logout-header-li"><a href={`${serverURL}/auth/logout`}>Log out</a></li>,
       ];
@@ -37,7 +37,7 @@ class Header extends Component<HeaderProps> {
       <nav>
         <div className="nav-wrapper #42a5f5 blue lighten-1">
           <Link to="/" className={`left brand-logo ${styles.li_margins}`}>
-            Surveys
+            <i className="material-icons">home</i>
           </Link>
           <ul className="right">
             {this.renderLogin()}
