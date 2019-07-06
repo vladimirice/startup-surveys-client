@@ -2,6 +2,8 @@
 
 https://startup-surveys.sunarmy.pro/
 
+<a href="https://codeclimate.com/github/vladimirice/startup-surveys-client/maintainability"><img src="https://api.codeclimate.com/v1/badges/1bdb0561f6f3b7226502/maintainability" /></a>
+
 This is a project to demonstrate my React skills.
 
 Now project is under development. See [TODO](TODO.md)
