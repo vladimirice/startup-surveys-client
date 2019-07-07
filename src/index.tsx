@@ -2,17 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 
-import { applyMiddleware, createStore } from 'redux';
-import { Provider } from 'react-redux';
-import reduxThunk from 'redux-thunk';
-import reducers from './reducers';
-
 import App from './components/app/App';
+import ReduxRoot from './components/common/redux/reduxRoot';
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 ReactDOM.render(
-  <Provider store={store}>
+  <ReduxRoot initialState={{}}>
     <App />
-  </Provider>,
+  </ReduxRoot>,
   document.querySelector('#root'),
 );

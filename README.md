@@ -66,3 +66,39 @@ make check-project-before-commit
 * Common backend-frontend library to store model interfaces like `ISurvey`, `IUser`
 * Strict typing for HOC - remove `any`
 
+
+## Autotests cases
+
+Guest:
+* Welcome page and card content - for guest
+
+Logged user:
+* Initial Redux auth state is mock user
+
+No credits:
+* card to offer deposit is visible
+* Card to create a new survey is not visible
+* credits 0 - in a header
+
+There are credits:
+* Card to create a new survey is visible
+
+There are two surveys:
+* mock an API call
+* There is a list with the two surveys
+* Check card view - all required fields must be visible
+
+Creation form - most difficult
+* follow the all steps - imitate actions
+* Do not check error handling now - future task
+* after clicking next - ensure a submit form is appeared
+* after clicking cancel - ensure the /surveys page is appeared
+* after clicking on "create" - ensure that all fields are cleared
+
+* Click next again - all fields values must be preserved
+
+Form review:
+* Ensure all values are shown
+* click submit => mock the axios call
+    * response - current user data
+* ensure that we are on the /surveys page
