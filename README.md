@@ -29,6 +29,7 @@ Card number for Stripe (test mode)
 * Two steps survey creation form Redux Form.
 * React Router, Redux forms, Redux thunk are used.
 * Email sending - integration with the MailGun
+* [High Order Component](src/components/auth/requireAuth.tsx) to provide Guest/Logged redirect logic
 
 ### Quality
 * Strict typings by the Typescript.
@@ -62,4 +63,6 @@ make check-project-before-commit
 ## Future improvements
 * Frontend autotests
 * Not logged user follows the /surveys URL - a request returns 401 status. The cookie-based app, how to avoid the request?
-* Common backend-frontend library to store model interfaces
+* Common backend-frontend library to store model interfaces like `ISurvey`, `IUser`
+* Strict typing for HOC - remove `any`
+

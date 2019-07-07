@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addCreditsCard, newSurveyCard } from '../../common/elements/cardsElements';
 import { fetchCurrentUserSurveys } from '../../../actions';
@@ -7,16 +6,17 @@ import { AuthType, ISurveyModel, IUser } from '../../../interfaces/modelInterfac
 import { IState } from '../../../interfaces/stateInterfaces';
 
 import styles from '../../common/cssModules/common.module.css';
+import requireAuth from '../../auth/requireAuth';
+import { IPropsWithAuthHistory } from '../../../interfaces/propsInterfaces';
 
-interface Props {
+interface Props extends IPropsWithAuthHistory {
   fetchCurrentUserSurveys: Function;
   surveys: ISurveyModel[];
-  auth: AuthType;
 }
 
 class SurveysPage extends Component<Props> {
   public componentDidMount(): void {
-    this.props.fetchCurrentUserSurveys(this.props.auth);
+    this.props.fetchCurrentUserSurveys();
   }
 
   public render(): JSX.Element {
@@ -28,10 +28,6 @@ class SurveysPage extends Component<Props> {
   private renderContent(): JSX.Element[] | JSX.Element {
     if (this.props.auth === null) {
       return <div>Loading...</div>;
-    }
-
-    if (this.props.auth === false) {
-      return <Redirect to="/" />;
     }
 
     const render: JSX.Element[] = [];
@@ -82,8 +78,8 @@ class SurveysPage extends Component<Props> {
 }
 
 const mapStateToProps = (state: IState): { surveys: ISurveyModel[]; auth: AuthType} => ({
-  surveys: state.surveys,
-  auth: state.auth,
+  surveys:  state.surveys,
+  auth:     state.auth,
 });
 
-export default connect(mapStateToProps, { fetchCurrentUserSurveys })(SurveysPage);
+export default connect(mapStateToProps, { fetchCurrentUserSurveys })(requireAuth<Props>(SurveysPage));

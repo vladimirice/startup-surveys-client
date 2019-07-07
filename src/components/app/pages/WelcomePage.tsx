@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import CardImage from '../../common/CardImage';
 import GoogleAuthLink from '../../common/GoogleAuthLink';
-import { AuthType } from '../../../interfaces/modelInterfaces';
-import { authPropFromState } from '../../../utils/redux-helper/mapStateToPropsHelper';
+import { mapToPropsWithAuth } from '../../../utils/redux-helper/mapStateToPropsHelper';
+import requireGuest from '../../auth/requireGuest';
 
-interface Props {
-  auth: AuthType;
-}
-
-class WelcomePage extends Component<Props> {
+class WelcomePage extends Component {
   public render(): JSX.Element {
-    return this.renderContent();
+    return WelcomePage.renderContent();
   }
 
-  private renderContent(): JSX.Element {
-    if (this.props.auth) {
-      return <Redirect to="/surveys" />;
-    }
-
+  private static renderContent(): JSX.Element {
     return (
       <div>
         <CardImage
@@ -34,4 +25,4 @@ class WelcomePage extends Component<Props> {
   }
 }
 
-export default connect(authPropFromState)(WelcomePage);
+export default connect(mapToPropsWithAuth)(requireGuest(WelcomePage));

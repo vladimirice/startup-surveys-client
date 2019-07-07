@@ -5,7 +5,7 @@ import { Redirect } from 'react-router';
 import SurveysReviewForm from '../forms/SurveysReviewForm';
 import SurveysForm from '../forms/SurveysForm';
 import { AuthType } from '../../../interfaces/modelInterfaces';
-import { authPropFromState } from '../../../utils/redux-helper/mapStateToPropsHelper';
+import { mapToPropsWithAuth } from '../../../utils/redux-helper/mapStateToPropsHelper';
 
 interface State {
   showReviewForm: boolean;
@@ -41,7 +41,7 @@ class NewSurveyPage extends Component<Props> {
 }
 
 const SurveysNewWithProps = connect(
-  authPropFromState,
+  mapToPropsWithAuth,
 )(NewSurveyPage);
 
 export default reduxForm({

@@ -47,7 +47,9 @@ module.exports =  {
     'import/prefer-default-export': 'off',
     'class-methods-use-this': 'off',
     'max-len': ["error", { "code": 150 }],
-    'no-underscore-dangle': 'off'
+    'no-underscore-dangle': 'off',
+    'key-spacing': 'off',
+    'no-multi-spaces': 'off'
   },
   settings:  {
     react:  {
