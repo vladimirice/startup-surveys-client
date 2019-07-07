@@ -1,50 +1,65 @@
 # Startup surveys
 
-https://startup-surveys.sunarmy.pro/
-
 <a href="https://codeclimate.com/github/vladimirice/startup-surveys-client/maintainability"><img src="https://api.codeclimate.com/v1/badges/1bdb0561f6f3b7226502/maintainability" /></a>
 
-This is a project to demonstrate my React skills.
+https://startup-surveys.sunarmy.pro/
 
-Now project is under development. See [TODO](TODO.md)
+**Goal:** Create email surveys, ask people about your ideas, observe response statistics.
 
-## How to use
+Startup surveys is a project to demonstrate my React skills.
 
-Just read and follow application instructions step by step.
+Backend part is [here](https://github.com/vladimirice/startup-surveys-server)
 
-Card number to test application:
+## Features
+
+1. Log in via Google OAuth.
+2. Add some credits via the payment system (Stripe).
+3. Create a survey.
+4. Observe an email and answer the question.
+5. Observe the answer statistics.
+
+Card number for Stripe (test mode)
 ```
 4242 4242 4242 4242
 ``` 
 
-## Quality tools
-```
-npm run checks
-```
+## Architecture
 
-Additional quality checks requires `codeclimate` to be installed globally
-```
-make check-project-before-commit
-```
-
-## Features
 * OAuth cookie-based authorization.
-* Billing (Stripe) - test mode integration.
-* Two steps survey creation form (Redux Form).
+* Two steps survey creation form Redux Form.
 * React Router, Redux forms, Redux thunk are used.
+* Email sending - integration with the MailGun
 
-## Quality
-* Different badges
-* Snyk test
+### Quality
+* Strict typings by the Typescript.
+* Many different linters.
+* CodeClimate.
 
-## Available Scripts
+## Scripts
 
-To start app in the development mode:
+### Maintenance
+
+To start the application in the development mode:
 ```
 npm start
 ```
 
-To build app:
+To build the application:
 ```
 npm run build
 ```
+
+### Quality tools
+```
+npm run checks
+```
+
+Additional quality checks require `codeclimate` to be installed globally
+```
+make check-project-before-commit
+```
+
+## Future improvements
+* Frontend autotests
+* Not logged user follows the /surveys URL - a request returns 401 status. The cookie-based app, how to avoid the request?
+* Common backend-frontend library to store model interfaces

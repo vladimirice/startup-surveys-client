@@ -59,7 +59,7 @@ class SurveysPage extends Component<Props> {
         <div className="card-content">
           <span className="card-title">{item.title}</span>
           <p>{item.body}</p>
-          <p className="right">
+          <p className="right hide-on-med-and-down">
               Sent On: { new Date(item.createdAt).toLocaleString() }
           </p>
         </div>
