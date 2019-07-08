@@ -3,3 +3,6 @@ checks:
   method-complexity:
     config:
       threshold: 6
+  similar-code:
+    config:
+      threshold: 120

@@ -25,11 +25,13 @@ Card number for Stripe (test mode)
 
 ## Architecture
 
+* Typescript
 * OAuth cookie-based authorization.
 * Two steps survey creation form Redux Form.
 * React Router, Redux forms, Redux thunk are used.
 * Email sending - integration with the MailGun
-* [High Order Component](src/components/auth/requireAuth.tsx) to provide Guest/Logged redirect logic
+* [High Order Components](src/components/auth/requireAuth.tsx) to provide Guest/Logged redirect logic
+* [Frontend integration tests](src/__tests__/App.test.tsx)
 
 ### Quality
 * Strict typings by the Typescript.
@@ -61,44 +63,7 @@ make check-project-before-commit
 ```
 
 ## Future improvements
-* Frontend autotests
+* Frontend autotests for create survey form
 * Not logged user follows the /surveys URL - a request returns 401 status. The cookie-based app, how to avoid the request?
 * Common backend-frontend library to store model interfaces like `ISurvey`, `IUser`
 * Strict typing for HOC - remove `any`
-
-
-## Autotests cases
-
-Guest:
-* Welcome page and card content - for guest
-
-Logged user:
-* Initial Redux auth state is mock user
-
-No credits:
-* card to offer deposit is visible
-* Card to create a new survey is not visible
-* credits 0 - in a header
-
-There are credits:
-* Card to create a new survey is visible
-
-There are two surveys:
-* mock an API call
-* There is a list with the two surveys
-* Check card view - all required fields must be visible
-
-Creation form - most difficult
-* follow the all steps - imitate actions
-* Do not check error handling now - future task
-* after clicking next - ensure a submit form is appeared
-* after clicking cancel - ensure the /surveys page is appeared
-* after clicking on "create" - ensure that all fields are cleared
-
-* Click next again - all fields values must be preserved
-
-Form review:
-* Ensure all values are shown
-* click submit => mock the axios call
-    * response - current user data
-* ensure that we are on the /surveys page

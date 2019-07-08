@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCreditsCard, newSurveyCard } from '../../common/elements/cardsElements';
+import { AddCreditsCard, NewSurveyCard } from '../../common/elements/cardsElements';
 import { fetchCurrentUserSurveys } from '../../../actions';
 import { AuthType, ISurveyModel, IUser } from '../../../interfaces/modelInterfaces';
 import { IState } from '../../../interfaces/stateInterfaces';
@@ -30,7 +31,7 @@ class SurveysPage extends Component<Props> {
       return <div>Loading...</div>;
     }
 
-    const render: JSX.Element[] = [];
+    const render: any = [];
 
     if (this.props.surveys.length > 0) {
       render.push(this.renderSurveys());
@@ -39,12 +40,12 @@ class SurveysPage extends Component<Props> {
     const { credits } = this.props.auth as IUser;
 
     if (credits === 0) {
-      render.push(addCreditsCard);
+      render.push(<AddCreditsCard key='add-credits-card'/>);
 
       return render;
     }
 
-    render.push(newSurveyCard);
+    render.push(<NewSurveyCard key='add-surveys-card'/>);
 
     return render;
   }

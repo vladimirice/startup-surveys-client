@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CardImage from '../../common/CardImage';
-import GoogleAuthLink from '../../common/GoogleAuthLink';
 import { mapToPropsWithAuth } from '../../../utils/redux-helper/mapStateToPropsHelper';
 import requireGuest from '../../auth/requireGuest';
+import { WelcomeCard } from '../../common/elements/cardsElements';
 
 class WelcomePage extends Component {
   public render(): JSX.Element {
@@ -13,13 +12,7 @@ class WelcomePage extends Component {
   private static renderContent(): JSX.Element {
     return (
       <div>
-        <CardImage
-          imgAlt="welcome"
-          imgSrc="/img/welcome-page.jpg"
-          title="Welcome!"
-          content='Create email surveys, ask people about your ideas, observe response stats. Please log in to continue.'
-          action={<GoogleAuthLink class='btn-small'/>}
-        />
+        <WelcomeCard/>
       </div>
     );
   }

@@ -7,9 +7,6 @@ check-project-npm-outdated:
 check-project-by-codeclimate:
 	/bin/bash ./ci-scripts/check-project-code-climate.sh
 
-check-project-by-snyk:
-	/bin/bash ./ci-scripts/check-project-code-climate.sh
-
 check-project-before-commit:
-	npm run lint
+	npm run checks
 	/bin/bash ./ci-scripts/check-project-code-climate.sh
