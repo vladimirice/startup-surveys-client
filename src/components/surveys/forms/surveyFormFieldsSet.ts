@@ -19,7 +19,7 @@ export const surveyFormFieldsSet: IFields[] = [
     icon: 'subject',
   },
   {
-    label: 'The question',
+    label: 'The question to answer Yes or No',
     name: 'body',
     placeholder: 'Do you have a good delivery service?',
     icon: 'question_answer',
