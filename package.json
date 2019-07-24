@@ -17,11 +17,12 @@
     "redux": "^4.0.1",
     "redux-form": "^8.2.4",
     "redux-thunk": "^2.3.0",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "ucom.libs.common": "^1.18.0"
   },
   "scripts": {
-    "start": "npm run checks && react-scripts start",
-    "build": "npm run checks && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "test-ci": "CI=true react-scripts test",
     "eject": "react-scripts eject",
