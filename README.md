@@ -6,37 +6,30 @@ https://startup-surveys.sunarmy.pro/
 
 **Goal:** Create email surveys, ask people about your ideas, observe response statistics.
 
-Startup surveys is a project to demonstrate my React skills.
+Startup surveys is a project to demonstrate my ReactJS skills.
 
 Backend part is [here](https://github.com/vladimirice/startup-surveys-server)
 
-## Features
+Most exciting things I did:
+* All project files are written using Typescript.
+* Completely separated code bases - frontend (client) and backend.
+* React Router, Redux Forms, Redux thunk is used.
+* [Autotests](src/__tests__/App.test.tsx) of components using the `Enzyme` library.
+* `Stripe` payment system integration.
+* [High Order Components](src/components/auth) to provide Guest/Logged redirect logic
+* Many different [linters](.eslintrc.js) to ensure quality
+* CodeClimate badge to ensure quality
 
-1. Log in via Google OAuth.
-2. Add some credits via the payment system (Stripe).
-3. Create a survey.
-4. Observe an email and answer the question.
-5. Observe the answer statistics.
+![Application business workflow](https://raw.githubusercontent.com//vladimirice/startup-surveys-client/master/documentation/img/01-application-business-workflow.jpg)
+![Application components](https://raw.githubusercontent.com//vladimirice/startup-surveys-client/master/documentation/img/02-application-components.jpg)
+![Action to fetch user state](https://raw.githubusercontent.com//vladimirice/startup-surveys-client/master/documentation/img/03-action-to-fetch-user-state.jpg)
+
+## Notes
 
 Card number for Stripe (test mode)
 ```
 4242 4242 4242 4242
-``` 
-
-## Architecture
-
-* Typescript
-* OAuth cookie-based authorization.
-* Two steps survey creation form Redux Form.
-* React Router, Redux forms, Redux thunk are used.
-* Email sending - integration with the MailGun
-* [High Order Components](src/components/auth/requireAuth.tsx) to provide Guest/Logged redirect logic
-* [Frontend integration tests](src/__tests__/App.test.tsx)
-
-### Quality
-* Strict typings by the Typescript.
-* Many different linters.
-* CodeClimate.
+```
 
 ## Scripts
 
@@ -66,4 +59,4 @@ make check-project-before-commit
 * Frontend autotests for create survey form
 * Not logged user follows the /surveys URL - a request returns 401 status. The cookie-based app, how to avoid the request?
 * Common backend-frontend library to store model interfaces like `ISurvey`, `IUser`
-* Strict typing for HOC - remove `any`
+* Strict typing for High-order components - remove `any`
