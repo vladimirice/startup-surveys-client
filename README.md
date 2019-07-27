@@ -20,9 +20,11 @@ Most exciting things I did:
 * Many different [linters](.eslintrc.js) to ensure quality
 * CodeClimate badge to ensure quality
 
-![Application business workflow](https://raw.githubusercontent.com//vladimirice/startup-surveys-client/master/documentation/img/01-application-business-workflow.jpg)
-![Application components](https://raw.githubusercontent.com//vladimirice/startup-surveys-client/master/documentation/img/02-application-components.jpg)
-![Action to fetch user state](https://raw.githubusercontent.com//vladimirice/startup-surveys-client/master/documentation/img/03-action-to-fetch-user-state.jpg)
+![Application business workflow](https://raw.githubusercontent.com/vladimirice/startup-surveys-client/master/documentation/img/01-application-business-workflow.jpg)
+
+![Application components](https://raw.githubusercontent.com/vladimirice/startup-surveys-client/master/documentation/img/02-application-components.jpg)
+
+![Action to fetch user state](https://raw.githubusercontent.com/vladimirice/startup-surveys-client/master/documentation/img/03-action-to-fetch-user-state.jpg)
 
 ## Notes
 
